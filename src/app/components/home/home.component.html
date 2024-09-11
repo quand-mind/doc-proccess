@@ -1,5 +1,15 @@
 <div class="main">
   <div class="home-container">
-    <div class="menu-home"></div>
+    <div class="menu-home">
+      <div class="center-absolute">Docs</div>
+      <div class="menu-items">
+        {{angle}}
+        @for (item of menu; track item.csistema) {
+          <div>
+            {{item.xnombre}}
+          </div>
+        }
+      </div>
+    </div>
   </div>
 </div>

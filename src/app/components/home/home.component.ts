@@ -3,17 +3,21 @@ import { FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  menu:any = []
+  angle:any = 360
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -37,6 +41,10 @@ export class HomeComponent {
     return (Math.floor((new Date).getTime() / 1000)) >= expiry;
   }
   ngOnInit() {
-    
+    this.http.get(`${environment.apiUrl}/system/get`).subscribe((data:any) => {
+      console.log(data);
+      this.menu = data.data
+      this.angle = this.angle / data.data.length
+    })
   }
 }
