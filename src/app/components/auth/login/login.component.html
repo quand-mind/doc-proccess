@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="floating-label">
-          <input placeholder="Password" type="password" name="password" id="password" autocomplete="off">
+          <input [(ngModel)]="password" placeholder="Password" type="password" name="password" id="password" autocomplete="off">
           <label for="password">Password:</label>
           <div class="icon">
             <svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xml:space="preserve"              xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
             </svg>
           </div>
         </div>
-        <button type="submit" onClick="return false;">Log in</button>
+        <button type="submit" (click)="login()">Log in</button>
         <a href="https://codepen.io/elujambio/pen/yjwzGP" class="discrete" target="_blank">Basic version</a>
       </form>
     </div>
