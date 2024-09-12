@@ -18,6 +18,8 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
   menu:any = []
   angle:any = 360
+  width:any = 100
+  showMenu:any = false
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -43,8 +45,20 @@ export class HomeComponent {
   ngOnInit() {
     this.http.get(`${environment.apiUrl}/system/get`).subscribe((data:any) => {
       console.log(data);
+      
       this.menu = data.data
       this.angle = this.angle / data.data.length
+      if(data.data.length % 2 == 0) {
+        this.width = this.width / (data.data.length)
+      } else {
+        this.width = this.width / ((data.data.length - 1))
+      }
+      // data.data.forEach((item:any) => {
+        
+      //   this.http.get(`${item.ximagenurl}`).subscribe((data:any) => {
+
+      //   });
+      // })
     })
   }
 }

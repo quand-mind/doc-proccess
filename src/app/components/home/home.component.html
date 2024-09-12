@@ -1,12 +1,18 @@
-<div class="main">
+<div  [class]="!showMenu ? 'main':'main main-showed'">
   <div class="home-container">
+    
     <div class="menu-home">
-      <div class="center-absolute">Docs</div>
-      <div class="menu-items">
-        {{angle}}
-        @for (item of menu; track item.csistema) {
-          <div>
-            {{item.xnombre}}
+      <button (click)="showMenu = !showMenu" [class]="!showMenu ? 'center-absolute' : 'center-absolute center-absolute-show'">
+        <img src="./../../../assets/img/docs.png" height="70px" alt="">
+        <small style="font-weight: 700;">DOCS</small>
+      </button>
+      <div [class]="!showMenu ? 'menu-items':'menu-items menu-items-showed'">
+        @for (item of menu; track item.csistema; let idx = $index) {
+          <div [style]="'transform: rotate('+(idx*angle) + 'deg)'" class="menu-item">
+            <a href="#" [style]="'transform: rotate(-'+(idx*angle) + 'deg)'">
+              <img height="50px" [attr.src]="item.ximagenurl" alt="">
+              <small style="font-weight: 700;" [class]="!showMenu ? 'text-item': 'text-item item-showed'">{{item.xnombre}}</small>
+            </a>
           </div>
         }
       </div>
