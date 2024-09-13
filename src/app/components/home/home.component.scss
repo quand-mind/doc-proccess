@@ -44,6 +44,8 @@
   height: 65vw !important;
   width: 65vw !important;
   transform: rotate(0deg) !important;
+  max-height: 100vh;
+    max-width: 100vh;
 }
 .menu-items {
   position: relative;
